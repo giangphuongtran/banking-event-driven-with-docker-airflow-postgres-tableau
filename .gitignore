@@ -1,8 +1,10 @@
-# Env files
+# Secrets and local env files
 .env
 .env.*
 **/.env
 **/.env.*
+!.env.example
+!**/.env.example
 
 # Python
 __pycache__/
@@ -10,32 +12,41 @@ __pycache__/
 *.pyo
 *.pyd
 *.so
-*.egg-info/
-.dist/
-.build/
-.eggs/
-.venv/
-venv/
-ENV/
-.env/
-pip-wheel-metadata/
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# Logs
-*.log
-
-# OS / Editor
+# OS / editors
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# Docker
-**/docker/postgres/data/
-**/data/
+# Logs
+*.log
+logs/
+docker/airflow/logs/
 
-**/logs/
+# dbt generated artifacts
+banking_dbt/target/
+banking_dbt/dbt_packages/
+banking_dbt/logs/
+
+# Local dbt profile/secrets
+banking_dbt/.dbt/
+
+# Docker runtime data
+docker/postgres/data/
+docker/minio/data/
+
+# CI cache
+.github/.cache/

@@ -6,6 +6,8 @@ services:
     container_name: airflow-init
     depends_on:
       - airflow-postgres
+    env_file:
+      - ./docker/dags/.env
     environment:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://${AIRFLOW_DB_USER}:${AIRFLOW_DB_PASSWORD}@airflow-postgres:5432/${AIRFLOW_DB_NAME}
@@ -120,6 +122,8 @@ services:
       - airflow-scheduler
       - airflow-postgres
       - airflow-init
+    env_file:
+      - ./docker/dags/.env
     ports:
       - "8080:8080"
     environment:
@@ -142,6 +146,8 @@ services:
     depends_on:
       - airflow-postgres
       - airflow-init
+    env_file:
+      - ./docker/dags/.env
     environment:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://${AIRFLOW_DB_USER}:${AIRFLOW_DB_PASSWORD}@airflow-postgres:5432/${AIRFLOW_DB_NAME}

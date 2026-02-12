@@ -37,3 +37,20 @@ git push -u origin main
 
 - Create DAG tasks to download data from MinIO and load into Snowflake `docker/dags/minio_to_snowflake.py`
 
+## 11-Feb-2026:
+
+- Initialize dbt with
+```bash
+dbt init banking_dbt
+dbt debug
+dbt run
+```
+- Create dbt models for staging and marts
+- Create dbt snapshots
+- Create DAG task to automate
+- Fail to run the DAG task for replication due to schema not found, insufficient privilege even though ran successfully in terminal
+
+## 12-Feb-2026
+
+- Troubleshoot the issue, root cause was '$$' in password converted to only '$'
+- 
