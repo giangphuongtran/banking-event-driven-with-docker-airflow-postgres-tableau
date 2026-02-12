@@ -7,24 +7,24 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-- Create `README.md, .gitignore, docker-compose.yml, dockerfile-airflow.dockerfile, .env`
-- Add `platform: linux/amd64` because some images in the `docker-compose.yml` don't publish an arm64 manifest for that tag
+- Created `README.md, .gitignore, docker-compose.yml, dockerfile-airflow.dockerfile, .env`
+- Added `platform: linux/amd64` because some images in the `docker-compose.yml` don't publish an arm64 manifest for that tag
 
 ```bash
-docker compose exec airflow-webserver airflow users create --username mimi --firstname tran --lastname mi --role Admin --email admin@gmail.com --password airflow_password
+docker compose exec airflow-webserver airflow users Created --username mimi --firstname tran --lastname mi --role Admin --email admin@gmail.com --password airflow_password
 ```
 
 - Airflow services failed because of no airflow db init -> Add airflow-init service into `docker-compose.yml`
-- Create database and tables `postgres/01_create_tables.sql`
-- Create data generator `data-generator/faker_generator.py`
-- Create a connector to Kafka and Debezium `kafka-debezium/generate_post_connector.py`
-- Check for existing topics on Kafka
+- Created database and tables `postgres/01_create_tables.sql`
+- Created data generator `data-generator/faker_generator.py`
+- Created a connector to Kafka and Debezium `kafka-debezium/generate_post_connector.py`
+- Checked for existing topics on Kafka
 
 ```bash
 docker compose exec kafka kafka-topics --bootstrap-server kafka:9092 --list
 ```
 
-- Commit and save today's progress to Github
+- Committed and saved today's progress to Github
 
 ```bash
 git init
@@ -35,22 +35,22 @@ git remote add origin https://github.com/giangphuongtran/banking-event-driven-wi
 git push -u origin main
 ```
 
-- Create DAG tasks to download data from MinIO and load into Snowflake `docker/dags/minio_to_snowflake.py`
+- Created DAG tasks to download data from MinIO and load into Snowflake `docker/dags/minio_to_snowflake.py`
 
 ## 11-Feb-2026:
 
-- Initialize dbt with
+- Initialized dbt with
 ```bash
 dbt init banking_dbt
 dbt debug
 dbt run
 ```
-- Create dbt models for staging and marts
-- Create dbt snapshots
-- Create DAG task to automate
-- Fail to run the DAG task for replication due to schema not found, insufficient privilege even though ran successfully in terminal
+- Created dbt models for staging and marts
+- Created dbt snapshots
+- Created DAG task to automate
+- Failed to run the DAG task for replication due to schema not found, insufficient privilege even though ran successfully in terminal
 
 ## 12-Feb-2026
 
-- Troubleshoot the issue, root cause was '$$' in password converted to only '$'
-- 
+- Troubleshoot the issue, root cause was '$$' in password converted to only '$' -> change Snowflake password and remember this issue
+- Created CI/CD workflows
